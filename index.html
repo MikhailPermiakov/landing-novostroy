@@ -16,9 +16,9 @@
   <div class="mask-wrapper">
     <header class="header">
       <nav class="navigation">
-        <a class="navigation__link" href="apartment">о квартирах</a>
-        <a class="navigation__link" href="project">о проекте</a>
-        <a class="navigation__link" href="contact">контакты</a>
+        <a class="navigation__link" href="#apartment">о квартирах</a>
+        <a class="navigation__link" href="#project">о проекте</a>
+        <a class="navigation__link" href="#contact">контакты</a>
       </nav>
       <a class="button-link" href="#submit">записаться на просмотр</a>
     </header>
@@ -49,7 +49,7 @@
   </div>
   </div>
   <!-- контейнер о проекте -->
-  <div class="container-about">
+  <div class="container-about" id="project">
     <h2 class="text-center h2">О проекте</h2>
     <h3 class="text-center h3">Жилой комплекс в современном стиле в экологически чистом районе. Развитая инфраструктура с магазинами, школой и детским садом. Просторные квартиры с отделкой — заезжайте и живите!</h3>
     <div class="box-about">
@@ -79,7 +79,7 @@
   <!-- контейнер фон -->
   <div class="container-background"></div>
   <!-- контейнер планировки -->
-  <div class="container-layout">
+  <div class="container-layout" id="apartment">
     <div class="container-layout__top">
       <h2 class="text-center h2">Планировки квартир комплекса</h2>
       <h3 class="text-center h3">Просторные квартиры с готовой отделкой</h3>
@@ -128,7 +128,6 @@
     </div>
     <div class="container-layout__bottom">
       <h3 class="text-center h3">Наши квартиры уже с отделкой. Вы можете сразу перейти к приятным заботам по обустройству своего дома.</h3>
-      
       <!--вставка слайдера-->
       <div class="container-slider">
         <div class="container-slider__slide-wrapper">
@@ -154,13 +153,37 @@
                 <a class="slide__link next" href="#sl-4"></a>
             </div>
         </div>
-    </div>  
-      <!--вставвка -->
-      
+      </div>
+      <a class="button-link" href="#submit">записаться на просмотр</a>  
+    </div>
+  </div>
+  <!--контейнер форма -->
+  <div class="container-face container-form" id="submit">
+    <div class="mask-wrapper container-form">
+      <h2 class="text-center white h2">Запишитесь на просмотр</h2>
+      <h3 class="text-center white h3">Оставьте свои контактные данные, и мы перезвоним вам<br>в течение часа</h3>
+      <input class="checkbox" type="checkbox"  id="tab-btn" />
+      <label class="button-link button-form" for="tab-btn">Отправить заявку</label> 
+    </div>
+    <div class="form-hidden" id="content-form">
+      <div class="mask-wrapper">
+
+      </div>
+    </div>
+  </div>
+  <!--контейнер карта -->
+  <div class="container-map" id="contact">
+    <iframe class="container-map__map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=56.22225522994996%2C58.01095112606647%2C56.242339611053474%2C58.01889602552979&amp;layer=mapnik&amp;marker=58.014923796307336%2C56.23229742050171"></iframe><br/><a href="https://www.openstreetmap.org/?mlat=58.0149&amp;mlon=56.2323#map=16/58.0149/56.2323&amp;layers=N">Посмотреть более крупную карту</a>
+    <div class="container-map__contact">
+      <h2 class="text-left white h2">Контакты</h2>
+      <h3 class="text-left white h3">Отдел продаж<br>ЖК «Восточный»</h3>
+      <h3 class="text-left white h3">ул. Монастырская, д.57</h3>
+      <h3 class="text-left white h3">8(800) 123-45-67</h3>
+      <h3 class="text-left white h3">info@info.com</h3>
+      <span><a class="icon vk" href="#"></a><a class="icon insta" href="#"></a></span>
+    </div>
   </div>
   
   
-
-
 </body>
 </html>

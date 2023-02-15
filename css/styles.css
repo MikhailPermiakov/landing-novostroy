@@ -8,6 +8,9 @@
 margin: 0;
 padding: 0;
 box-sizing: border-box;
+/*не работает плавное перетекание, надо разобраться*/
+scroll-snap-type: y mandatory;
+scroll-behavior: smooth;
 }
 .white {
     color:#ffffff;
@@ -95,7 +98,7 @@ box-sizing: border-box;
     color: #ffffff;
     font-size: 16px;
     text-align: center;
-    padding: 13px 17px;
+    padding: 15px 17px;
     background-color: #28abb9;
 }
 .box-stat {
@@ -107,6 +110,7 @@ box-sizing: border-box;
 /*контейнер о проекте*/
 .container-about {
     padding: 5% 10%;
+    scroll-snap-align: center;
 }
 .box-about {
     display: flex;
@@ -146,6 +150,21 @@ box-sizing: border-box;
     background-size: cover;
 }
 /*контейнер планировки*/
+.container-layout {
+    scroll-snap-align: center;
+}
+.container-layout__top, .container-layout__bottom {
+    height: 100vh;
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.container-layout__bottom {
+    background-color: #fcfcfc;
+}
 
 /**--вставка слайдера--**/
 .container-slider {
@@ -157,7 +176,7 @@ box-sizing: border-box;
 .container-slider__slide-wrapper {
     display: flex;
     align-items: baseline;
-    width: 90%;
+    width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -197,17 +216,16 @@ box-sizing: border-box;
 /*попытка спрятать кнопки в момент смены слайдов, т.к. не получается их зафиксировать на экране */
 .slide__link:has(+ .slide__link:active), .slide__link:active, .slide__link:active + .slide__link {
     border-color: transparent;
-    transition-duration: 1s;
+    animation-name: link-hidden;
+    animation-duration: 2s;
+    /*transition-duration: 1s;
     transition-delay: 0.1s;
-    transition-timing-function: cubic-bezier(0, 1.2, 0, 1.2);
+    transition-timing-function: cubic-bezier(0, 1.2, 0, 1.2);*/
 } 
-
-/*---*/
-
 .slide__item {
     display: inline-flex;
     flex-direction: column;
-    width: clamp(280px, 32cqw, 550px);
+    width: clamp(280px, 37cqw, 550px);
 }
 .item__image {
     object-fit: cover;
@@ -215,20 +233,77 @@ box-sizing: border-box;
 .item__text {
     background-color: #2d6187;
 }
- 
+/*контейнер форма*/
+.container-form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    scroll-snap-align: center;
+}
+.checkbox {
+    display: none;
+}
+.button-form {
+    margin: 30px auto;
+    cursor: pointer;
+}
+#content-form {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+#tab-btn:checked~#content-form {
+    visibility: visible;
+}
+
+/*контейнер карта*/
+.container-map {
+    height: 90vh;
+    position: relative;
+}
+.container-map__map {
+    width: 100vw;
+    height: 90vh;
+}
+.container-map__contact {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background-color: #2d6187;
+    width: clamp(250px, 35cqw, 450px);
+}
+.icon {
+    display: inline-block;
+    width: clamp(30px, 3.5cqw, 45px);
+    height: clamp(30px, 3.5cqw, 45px);
+    margin: 0 5% 7% 5%;
+    background-size: contain;
+    background-position: center;
+}
+.vk {
+    background-image: url("../img/f11.png"); 
+}
+.insta {
+    background-image: url("../img/f12.png");
+}
 
 
 /*правила*/
 @media screen and (max-width: 575px) {
-    .mask-wrapper, .container-about, .slider {
+    .mask-wrapper, .container-about,
+    .container-layout__top, .container-layout__bottom {
         padding: 0 3%;
     }
     .navigation {
         width: 100%; 
         justify-content: center;
-    }
-
-    
+    }   
 
 }
 
@@ -249,5 +324,9 @@ box-sizing: border-box;
         max-width: 400px;
     }
     
+}
 
+@keyframes link-hidden {
+    from {border-color: transparent;}
+    to {border-color: gray;}
 }
