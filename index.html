@@ -83,9 +83,10 @@
     <div class="container-layout__top">
       <h2 class="text-center h2">Планировки квартир комплекса</h2>
       <h3 class="text-center h3">Просторные квартиры с готовой отделкой</h3>
-      
       <!--вставка слайдера-->
       <div class="container-slider">
+        <span class="container-slider__link-left"></span>
+        <span class="container-slider__link-right"></span>
         <div class="container-slider__slide-wrapper">
             <div class="slide" id="sl-1">
                 <div class="slide__item">
@@ -130,6 +131,8 @@
       <h3 class="text-center h3">Наши квартиры уже с отделкой. Вы можете сразу перейти к приятным заботам по обустройству своего дома.</h3>
       <!--вставка слайдера-->
       <div class="container-slider">
+        <span class="container-slider__link-left"></span>
+        <span class="container-slider__link-right"></span>
         <div class="container-slider__slide-wrapper">
             <div class="slide" id="sl-4">
                 <div class="slide__item">
@@ -162,12 +165,19 @@
     <div class="mask-wrapper container-form">
       <h2 class="text-center white h2">Запишитесь на просмотр</h2>
       <h3 class="text-center white h3">Оставьте свои контактные данные, и мы перезвоним вам<br>в течение часа</h3>
-      <input class="checkbox" type="checkbox"  id="tab-btn" />
-      <label class="button-link button-form" for="tab-btn">Отправить заявку</label> 
-    </div>
-    <div class="form-hidden" id="content-form">
-      <div class="mask-wrapper">
-
+      <input class="checkbox" type="checkbox"  id="tab-btn" name="button-link" />
+      <label class="button-link button-form" for="tab-btn" name="button-link" >Отправить заявку</label>
+      <div class="form-hidden" id="content-form">
+        <div class="mask-wrapper">
+          <form class="form" action="/action_page.php" target="_blank" method="post" autocomplete="on" id="form1">
+            <label class="form__exit" for="tab-btn" name="button-link" >X</label>
+            <legend class="form__title"><h3 class="text-center h3">Записаться на просмотр квартир</h3></legend>
+            <input class="form__name" type="text" placeholder="Имя" required /><br>
+            <input class="form__tel" type="tel" id="tel" placeholder="Телефон" required />
+            <label class="form__comment" for="tel">должен начинаться на +7</label>
+            <button class="button-link button-form" type="submit">Отправить</button> 
+          </form>
+        </div>
       </div>
     </div>
   </div>

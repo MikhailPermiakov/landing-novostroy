@@ -169,24 +169,46 @@ scroll-behavior: smooth;
 /**--вставка слайдера--**/
 .container-slider {
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
+    position: relative;
+}
+/*имитация кнопок с привязкой к слайдеру а не к слайду */
+.container-slider__link-left, 
+.container-slider__link-right {
+    display: block;
+    position: absolute;
+    width: clamp(22px, 3.5cqw, 40px);
+    height: clamp(22px, 3.5cqw, 40px);
+    transform: rotate(45deg); 
+    z-index: 1;
+}
+.container-slider__link-left {
+    left: 20px;
+    border-left: 3px solid gray;
+    border-bottom: 3px solid gray;
+}
+.container-slider__link-right {
+    right: 20px;
+    border-top: 3px solid gray;
+    border-right: 3px solid gray;
 }
 .container-slider__slide-wrapper {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    position: relative;
 }
 /*убираем полосу прокрутки*/
 .container-slider__slide-wrapper::-webkit-scrollbar {
     display: none;
 }
+/*слайд*/
 .slide {
     display: flex;
     justify-content: center;
@@ -197,31 +219,21 @@ scroll-behavior: smooth;
     scroll-snap-align: center;
     position: relative;
 }
+/*области невидимых кнопок*/
 .slide__link {
-    width: clamp(22px, 3.5cqw, 40px);
-    height: clamp(22px, 3.5cqw, 40px);
+    width: clamp(25px, 3.5cqw, 45px);
+    height: clamp(25px, 3.5cqw, 45px);
     transform: rotate(45deg);
     position: absolute;
+    z-index: 2;
 }
 .prev {
-    left: 10px;
-    border-left: 3px solid gray;
-    border-bottom: 3px solid gray;
+    left: 15px;
 }
 .next {
-    right: 10px;
-    border-top: 3px solid gray;
-    border-right: 3px solid gray;
+    right: 15px;
 }
-/*попытка спрятать кнопки в момент смены слайдов, т.к. не получается их зафиксировать на экране */
-.slide__link:has(+ .slide__link:active), .slide__link:active, .slide__link:active + .slide__link {
-    border-color: transparent;
-    animation-name: link-hidden;
-    animation-duration: 2s;
-    /*transition-duration: 1s;
-    transition-delay: 0.1s;
-    transition-timing-function: cubic-bezier(0, 1.2, 0, 1.2);*/
-} 
+
 .slide__item {
     display: inline-flex;
     flex-direction: column;
@@ -248,9 +260,10 @@ scroll-behavior: smooth;
 .button-form {
     margin: 30px auto;
     cursor: pointer;
+    border: none;
 }
-#content-form {
-    visibility: hidden;
+.form-hidden {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -259,7 +272,43 @@ scroll-behavior: smooth;
     z-index: 1;
 }
 #tab-btn:checked~#content-form {
-    visibility: visible;
+    display: block;
+}
+.form {
+    position: relative;
+    top: 20%;
+    left: calc(50% - 300px);
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 450px;
+    height: auto;
+    padding: 0 50px;
+}
+.form__exit {
+    position: absolute;
+    top: -28px;
+    right: -20px;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+}
+.form__name, .form__tel {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    padding: 7px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    outline: none;
+}
+.form__name:focus, .form__tel:focus {
+    box-shadow: 2px 2px 4px gray;
+}
+.form__comment {
+    font-size: 12px;
+    color: gray;
 }
 
 /*контейнер карта*/
@@ -303,6 +352,11 @@ scroll-behavior: smooth;
     .navigation {
         width: 100%; 
         justify-content: center;
+    }
+    .form {
+        width: 280px;
+        left: calc(50% - 170px);
+        padding: 0 10px;
     }   
 
 }
@@ -326,7 +380,3 @@ scroll-behavior: smooth;
     
 }
 
-@keyframes link-hidden {
-    from {border-color: transparent;}
-    to {border-color: gray;}
-}
