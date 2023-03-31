@@ -205,7 +205,7 @@ scroll-behavior: smooth;
     position: relative;
 }
 /*убираем полосу прокрутки*/
-.container-slider__slide-wrapper::-webkit-scrollbar {
+.container-slider__slide-wrapper::-webkit-scrollbar, .viewport::-webkit-scrollbar {
     display: none;
 }
 /*слайд*/
@@ -218,6 +218,7 @@ scroll-behavior: smooth;
     flex-shrink: 0;
     scroll-snap-align: center;
     position: relative;
+     
 }
 /*области невидимых кнопок*/
 .slide__link {
