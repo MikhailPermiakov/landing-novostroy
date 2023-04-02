@@ -362,7 +362,8 @@ box-sizing: border-box;
     }
     .form {
         width: 280px;
-        left: calc(50% - 170px);
+        top: 35%;
+        left: calc(50% - 160px);
         padding: 0 10px;
     }   
 
